@@ -1,6 +1,5 @@
 # HRMLESS Zapier Integration
-
-![HRMLESS Logo](https://hrmless.com/logo.png)
+![HRMLESS Logo](./img/logo-micro-120x120.png)
 
 **Version:** 1.0.0  
 **Platform:** Zapier Platform v18.0.1  
