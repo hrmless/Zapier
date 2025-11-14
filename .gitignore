@@ -1,0 +1,7 @@
+.env
+.openapi-generator-ignore
+.openapi-generator/*
+./.openapi-generator-ignore
+node_modules/
+test.json
+build/
