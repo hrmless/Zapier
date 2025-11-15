@@ -56,7 +56,7 @@ const actions = {
     [PositionApi.orgPositionRead.key]: {
         ...PositionApi.orgPositionRead,
         display: {
-            label: 'Get a Position By ID',
+            label: 'Get a Position',
             description: 'Gets a single position by its ID.',
         },
     },
@@ -69,14 +69,13 @@ const actions = {
     //         description: 'Creates a new position in your organization.',
     //     },
     // },
-
-    [PositionApi.orgPositionDelete.key]: {
-        ...PositionApi.orgPositionDelete,
-        display: {
-            label: 'Delete a Position',
-            description: 'Deletes a position from your organization.',
-        },
-    },
+    // [PositionApi.orgPositionDelete.key]: {
+    //     ...PositionApi.orgPositionDelete,
+    //     display: {
+    //         label: 'Delete a Position',
+    //         description: 'Deletes a position from your organization.',
+    //     },
+    // },
 
     [PositionApi.orgPositionUpdate.key]: {
         ...PositionApi.orgPositionUpdate,
@@ -112,7 +111,7 @@ const actions = {
     [CandidatesApi.orgPositionsCandidatesUpdate.key]: {
         ...CandidatesApi.orgPositionsCandidatesUpdate,
         display: {
-            label: 'Update a Candidates Details',
+            label: 'Update a Candidate',
             description: 'Updates details of a specific candidate by their ID.',
         },
     },
@@ -128,7 +127,7 @@ const actions = {
     [InterviewApi.orgPositionsCandidatesInterview.key]: {
         ...InterviewApi.orgPositionsCandidatesInterview,
         display: {
-            label: 'Get a Candidates Interview Details',
+            label: 'Get Interview Details',
             description: 'Gets interview details for a specific candidate.',
         },
     },

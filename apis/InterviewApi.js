@@ -29,7 +29,7 @@ module.exports = {
         key: 'orgPositionsCandidatesInterview',
         noun: 'Candidates',
         display: {
-            label: 'Get a Candidates Interview Details',
+            label: 'Get Interview Details',
             description: 'Get interview details for a candidate',
             hidden: false,
         },

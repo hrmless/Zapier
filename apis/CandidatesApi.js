@@ -35,7 +35,7 @@ module.exports = {
         noun: 'Candidates',
         display: {
             label: 'Delete Candidate',
-            description: 'Delete candidate details',
+            description: 'Delete a candidate by id',
             hidden: false,
         },
         operation: {
@@ -102,8 +102,8 @@ module.exports = {
         key: 'orgPositionsCandidatesRead',
         noun: 'Candidates',
         display: {
-            label: 'Get Candidate Details',
-            description: 'Get candidate details',
+            label: 'Get a Candidate',
+            description: 'Get a single candidate by id',
             hidden: false,
         },
         operation: {
@@ -167,8 +167,8 @@ module.exports = {
         key: 'orgPositionsCandidatesUpdate',
         noun: 'Candidates',
         display: {
-            label: 'Update Candidate Details',
-            description: 'Update candidate details ',
+            label: 'Update a Candidate',
+            description: 'Update a single candidate by id',
             hidden: false,
         },
         operation: {
@@ -233,8 +233,8 @@ module.exports = {
         key: 'orgPositionsCreate',
         noun: 'Candidates',
         display: {
-            label: 'Add candidate to a position',
-            description: 'Add candidate to a position',
+            label: 'Create a Candidate',
+            description: 'Adds a new candidate to a position',
             hidden: false,
         },
         operation: {
@@ -294,7 +294,7 @@ module.exports = {
         key: 'orgPositionsRead',
         noun: 'Candidates',
         display: {
-            label: '',
+            label: 'Get All Candidates',
             description: 'List all candidates for a position',
             hidden: false,
         },

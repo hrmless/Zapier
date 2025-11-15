@@ -73,9 +73,10 @@ const getAccessToken = async (z, bundle) => {
     url: `${BASE_LOGIN_URL}/realms/nervai/protocol/openid-connect/token`,
     body: {
       code: bundle.inputData.code,
-      client_id: 'zapier',
+      client_id: process.env.CLIENT_ID,
       redirect_uri: bundle.inputData.redirect_uri,
       grant_type: 'authorization_code',
+      client_secret: process.env.CLIENT_SECRET,
       code_verifier: bundle.inputData.code_verifier,
     },
     headers: {

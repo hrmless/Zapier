@@ -1,7 +1,7 @@
 {
   "name": "hrmless",
   "version": "1.0.0",
-  "description": "HRMLESS integrations for Zapier",
+  "description": "HRMLESS is an AI-powered HRM/ATS platform. GitHub: https://github.com/hrmless Docs: https://docs.hrmless.com/developer/overview",
   "author": "HRMLESS LLC",
   "main": "index.js",
   "scripts": {

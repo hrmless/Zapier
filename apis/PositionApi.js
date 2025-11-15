@@ -86,7 +86,7 @@ module.exports = {
         key: 'orgPositionList',
         noun: 'Position',
         display: {
-            label: '',
+            label: 'Get Positions',
             description: 'Get All Positions',
             hidden: false,
         },
@@ -127,67 +127,6 @@ module.exports = {
     },
 
     /**
-     * Delete Position action.
-     * Removes a position from the organization.
-     * 
-     * @type {Object}
-     */
-    orgPositionDelete: {
-        key: 'orgPositionDelete',
-        noun: 'Position',
-        display: {
-            label: '',
-            description: 'Delete Position Object By ID',
-            hidden: false,
-        },
-        operation: {
-            cleanInputData: false,
-            inputFields: [
-                {
-                    key: 'position_id',
-                    label: 'Position',
-                    type: 'string',
-                    required: true,
-                    dynamic: 'orgPositionAction.id.name',
-                },
-            ],
-            outputFields: [
-            ],
-            perform: async (z, bundle) => {
-                const org_id = bundle.authData.org_id;
-                const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/position/${bundle.inputData.position_id}`,
-                    method: 'DELETE',
-                    removeMissingValuesFrom: { params: true, body: true },
-                    headers: {
-                        'Content-Type': '',
-                        'Accept': '',
-                    },
-                    params: {},
-                    body: {},
-                };
-                return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
-                    if (response.status === 404) {
-                        throw new z.errors.Error('Positions not found. Please verify the position ID.', 'NotFound', 404);
-                    }
-                    if (response.status === 401) {
-                        throw new z.errors.Error('Unauthorized. Please verify your organization ID and OAUTH credentials.', 'Unauthorized', 401);
-                    }
-
-                    // If 204, return a dummy object
-                    if (response.status === 204 || !response.content) {
-                        return { success: true };
-                    }
-                    response.throwForStatus();
-                    const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionDelete', response.json);
-                    return results || { success: true };
-                });
-            },
-            sample: { success: true }
-        }
-    },
-
-    /**
      * Get Position by ID action.
      * Retrieves detailed information about a specific position.
      * 
@@ -197,8 +136,8 @@ module.exports = {
         key: 'orgPositionRead',
         noun: 'Position',
         display: {
-            label: '',
-            description: 'Get Position Object By ID',
+            label: 'Get a Position',
+            description: 'Get a Position Object by ID',
             hidden: false,
         },
         operation: {
@@ -256,8 +195,8 @@ module.exports = {
         key: 'orgPositionUpdate',
         noun: 'Position',
         display: {
-            label: '',
-            description: 'Update/Partial Update Position Object By ID',
+            label: 'Update Position by ID',
+            description: 'Update/Partial-Update Position Object By ID',
             hidden: false,
         },
         operation: {
@@ -356,6 +295,66 @@ module.exports = {
     //             })
     //         },
     //         sample: samples['PositionCreateSample']
+    //     }
+    // },
+    /**
+     * Delete Position action.
+     * Removes a position from the organization.
+     * 
+     * @type {Object}
+     */
+    // orgPositionDelete: {
+    //     key: 'orgPositionDelete',
+    //     noun: 'Position',
+    //     display: {
+    //         label: 'Delete a Position',
+    //         description: 'Delete a Position Object by ID',
+    //         hidden: false,
+    //     },
+    //     operation: {
+    //         cleanInputData: false,
+    //         inputFields: [
+    //             {
+    //                 key: 'position_id',
+    //                 label: 'Position',
+    //                 type: 'string',
+    //                 required: true,
+    //                 dynamic: 'orgPositionAction.id.name',
+    //             },
+    //         ],
+    //         outputFields: [
+    //         ],
+    //         perform: async (z, bundle) => {
+    //             const org_id = bundle.authData.org_id;
+    //             const options = {
+    //                 url: `${BASE_URL}/org/${bundle.authData.org_id}/position/${bundle.inputData.position_id}`,
+    //                 method: 'DELETE',
+    //                 removeMissingValuesFrom: { params: true, body: true },
+    //                 headers: {
+    //                     'Content-Type': '',
+    //                     'Accept': '',
+    //                 },
+    //                 params: {},
+    //                 body: {},
+    //             };
+    //             return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
+    //                 if (response.status === 404) {
+    //                     throw new z.errors.Error('Positions not found. Please verify the position ID.', 'NotFound', 404);
+    //                 }
+    //                 if (response.status === 401) {
+    //                     throw new z.errors.Error('Unauthorized. Please verify your organization ID and OAUTH credentials.', 'Unauthorized', 401);
+    //                 }
+
+    //                 // If 204, return a dummy object
+    //                 if (response.status === 204 || !response.content) {
+    //                     return { success: true };
+    //                 }
+    //                 response.throwForStatus();
+    //                 const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionDelete', response.json);
+    //                 return results || { success: true };
+    //             });
+    //         },
+    //         sample: { success: true }
     //     }
     // },
 }

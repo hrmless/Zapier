@@ -31,7 +31,7 @@ module.exports = {
         key: 'orgSettingsList',
         noun: 'Organization',
         display: {
-            label: 'Get Organization Settings',
+            label: 'Get Org Settings',
             description: 'Get all settings for your organization',
             hidden: false,
         },
@@ -84,7 +84,7 @@ module.exports = {
         key: 'orgSettingsUpdate',
         noun: 'Organization',
         display: {
-            label: 'Update Organization Settings',
+            label: 'Update Org Settings',
             description: 'Update organization settings including name, contact info, and calendar link',
             hidden: false,
         },
