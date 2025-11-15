@@ -17,7 +17,7 @@ HRMLESS revolutionizes hiring with AI-driven candidate screening and interview a
 HRMLESS is an AI-powered Human Resources Management platform that automates the entire candidate screening and interview process. With intelligent conversational AI, automated scoring, and integrations into your existing ATS, HRMLESS is helping organizations find the right resources faster with little impact to existing workflows. 
 
 ## Documentation
-All Documentation for this zapier integration can be found at: https://docs.hrmless.com/developer/zapier
+All Documentation for this zapier integration can be found at: https://docs.hrmless.com/developer/low_code/zapier
 
 ---
 
@@ -33,8 +33,8 @@ All Documentation for this zapier integration can be found at: https://docs.hrml
 
 ```bash
 # Clone repository
-git clone https://github.com/hrmless/nervai-zapier.git
-cd nervai-zapier/integration
+git clone https://github.com/hrmless/zapier.git
+cd zapier
 
 # Install dependencies
 npm install
