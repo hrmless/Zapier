@@ -2,7 +2,7 @@
  * @fileoverview Main entry point for the HRMLESS Zapier integration.
  * This file exports the app configuration including authentication, actions, searches, and triggers.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const { searchActions, createActions, triggers } = require('./operations/actions');

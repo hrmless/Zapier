@@ -2,7 +2,7 @@
  * @fileoverview Organization serializer model for HRMLESS Zapier integration.
  * Wraps Organization model for API serialization format.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const utils = require('../utils/utils');

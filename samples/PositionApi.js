@@ -83,23 +83,23 @@ module.exports = {
         kombo_job_id_id: "reserved for internal use",
         kombo_integration_id: "reserved for internal use",
     },
-    PositionCreateSample: {
-        name: "Delivery Driver",
-        state: "inactive",
-        department: "Delivery",
-        location: "Montana",
-        min_score: 5,
-        role_description: "Responsible for delivering packages to customers",
-        position_calender_link: "https://example.com/schedule_an_interview",
-        questionaire: [
-            {
-            name: "Question 1",
-            value: "Do you have a valid driver's license?",
-            },
-            {
-            name: "Question 2",
-            value: "Are you available to work weekends?",
-            }
-        ],
-    }
+    // PositionCreateSample: {
+    //     name: "Delivery Driver",
+    //     state: "inactive",
+    //     department: "Delivery",
+    //     location: "Montana",
+    //     min_score: 5,
+    //     role_description: "Responsible for delivering packages to customers",
+    //     position_calender_link: "https://example.com/schedule_an_interview",
+    //     questionaire: [
+    //         {
+    //         name: "Question 1",
+    //         value: "Do you have a valid driver's license?",
+    //         },
+    //         {
+    //         name: "Question 2",
+    //         value: "Are you available to work weekends?",
+    //         }
+    //     ],
+    // }
 }

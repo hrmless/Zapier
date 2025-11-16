@@ -2,7 +2,7 @@
  * @fileoverview Position API operations for HRMLESS Zapier integration.
  * Handles CRUD operations for job positions including list, read, update, and delete.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const samples = require('../samples/PositionApi');

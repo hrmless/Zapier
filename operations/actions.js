@@ -2,7 +2,7 @@
  * @fileoverview Action definitions and categorization for HRMLESS Zapier integration.
  * Organizes API operations into searches, creates, and triggers for Zapier.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const CandidatesApi = require('../apis/CandidatesApi');

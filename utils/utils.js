@@ -2,7 +2,7 @@
  * @fileoverview Utility functions for HRMLESS Zapier integration.
  * Provides helper functions for data transformation, action categorization, and field mapping.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const _ = require('lodash')

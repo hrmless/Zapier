@@ -2,7 +2,7 @@
  * @fileoverview Interview data model for HRMLESS Zapier integration.
  * Defines field schemas and data mapping for candidate interview records.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const utils = require('../utils/utils');

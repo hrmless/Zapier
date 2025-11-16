@@ -2,7 +2,7 @@
  * @fileoverview Organization API operations for HRMLESS Zapier integration.
  * Handles organization settings retrieval and updates.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const samples = require('../samples/OrganizationApi');

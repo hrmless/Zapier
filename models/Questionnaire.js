@@ -2,7 +2,7 @@
  * @fileoverview Questionnaire data model for HRMLESS Zapier integration.
  * Defines field schemas for interview questions (currently not actively used).
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const utils = require('../utils/utils');

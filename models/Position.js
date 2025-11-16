@@ -2,7 +2,7 @@
  * @fileoverview Position data model for HRMLESS Zapier integration.
  * Defines field schemas and data mapping for job position records.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const { min } = require('lodash');

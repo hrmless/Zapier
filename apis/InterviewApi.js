@@ -2,7 +2,7 @@
  * @fileoverview Interview API operations for HRMLESS Zapier integration.
  * Handles retrieval of interview details for candidates.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const samples = require('../samples/CandidatesApi');

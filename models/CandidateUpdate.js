@@ -2,7 +2,7 @@
  * @fileoverview CandidateUpdate data model for HRMLESS Zapier integration.
  * Defines field schema for updating existing candidates with position and org context.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const utils = require('../utils/utils');

@@ -2,7 +2,7 @@
  * @fileoverview OAuth2 authentication configuration for HRMLESS Zapier integration.
  * Handles OAuth2 flow, token management, and authorization for API requests.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const BASE_URL = process.env.BASE_URL;
@@ -126,7 +126,8 @@ const refreshAccessToken = async (z, bundle) => {
     url: `${BASE_LOGIN_URL}/realms/nervai/protocol/openid-connect/token`,
     body: {
       refresh_token: bundle.authData.refresh_token,
-      client_id: 'zapier',
+      client_id: process.env.CLIENT_ID,
+      client_secret: process.env.CLIENT_SECRET,
       grant_type: 'refresh_token',
     },
     headers: {
@@ -165,7 +166,8 @@ const authentication = {
       method: 'GET',
       url: `${BASE_LOGIN_URL}/realms/nervai/protocol/openid-connect/auth`,
       params: {
-        client_id: 'zapier',
+        client_id: process.env.CLIENT_ID,
+        client_secret: process.env.CLIENT_SECRET,
         state: '{{bundle.inputData.state}}',
         redirect_uri: '{{bundle.inputData.redirect_uri}}',
         response_type: 'code',

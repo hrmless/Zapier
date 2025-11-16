@@ -2,7 +2,7 @@
  * @fileoverview CandidateCreate data model for HRMLESS Zapier integration.
  * Defines minimal field schema for creating new candidates.
  * @author HRMLESS LLC
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 const utils = require('../utils/utils');
