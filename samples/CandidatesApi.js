@@ -37,6 +37,28 @@ module.exports = {
         updated_at: "2025-11-16T19:31:04.622Z"
     },
 
+    CandidateCreatedSample: {
+        id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        position_id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        organization_id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        name: "someone cool",
+        email: "user@example.com",
+        phone: "1234567890",
+        language: "en",
+        state: "not_invited_yet",
+        score: null,
+        feedback: null,
+        hired: false,
+        invited_at: null,
+        communications: null,
+        completed_at: null,
+        kombo_application_id: null,
+        short_listed: false,
+        tags: [],
+        created_at: "2025-11-16T19:31:04.622Z",
+        updated_at: "2025-11-16T19:31:04.622Z"
+    },
+
     CandidateCreateSample: {
         name: "someone cool",
         email: "user@example.com",

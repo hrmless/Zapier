@@ -78,7 +78,8 @@ module.exports = {
 
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesInterviewList', response.json);
-                    return results;
+                    // API returns an array with one candidate, extract the first item
+                    return Array.isArray(results) && results.length > 0 ? results[0] : [results];
                 })
             },
             sample: samples['InterviewSample']

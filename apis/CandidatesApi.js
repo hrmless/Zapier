@@ -149,7 +149,8 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesRead', response.json);
-                    return results;
+                    // API returns an array for search
+                    return Array.isArray(results) && results.length > 0 ? results : [results];
                 })
             },
             sample: samples['CandidateSample']
@@ -215,10 +216,11 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesUpdate', response.json);
-                    return results;
+                    // returns object for action
+                    return Array.isArray(results) && results.length > 0 ? results[0] : results;
                 })
             },
-            sample: samples['CandidateCreateSample']
+            sample: samples['CandidateSample']
         }
     },
     /**
@@ -276,10 +278,11 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCreate', response.json);
-                    return results;
+                    // returns object for action
+                    return Array.isArray(results) && results.length > 0 ? results[0] : results;
                 })
             },
-            sample: samples['CandidateCreateSample']
+            sample: samples['CandidateCreatedSample']
         }
     },
     /**
@@ -334,7 +337,8 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsRead', response.json);
-                    return results;
+                    // returns an array for search
+                    return Array.isArray(results) && results.length > 0 ? results : [results];
                 })
             },
             sample: samples['CandidateSample']
