@@ -7,7 +7,6 @@
 
 const CandidatesApi = require('../apis/CandidatesApi');
 const InterviewApi = require('../apis/InterviewApi');
-const OrganizationApi = require('../apis/OrganizationApi');
 const PositionApi = require('../apis/PositionApi');
 const { triggerMiddleware, isTrigger, searchMiddleware, hasSearchRequisites, isSearchAction, isCreateAction, createMiddleware } = require('../utils/utils');
 
@@ -27,31 +26,7 @@ const actions = {
     
     // orgPositionAction is used for dynamic dropdowns and registered as a search
     [PositionApi.orgPositionAction.key]: PositionApi.orgPositionAction,
-    
-    [OrganizationApi.orgSettingsList.key]: {
-        ...OrganizationApi.orgSettingsList,
-        display: {
-            label: 'Get Organization Settings',
-            description: 'Gets a list of organization settings.',
-        },
-    },
-   
-    [OrganizationApi.orgSettingsUpdate.key]: {
-        ...OrganizationApi.orgSettingsUpdate,
-        display: {
-            label: 'Update Organization Settings',
-            description: 'Updates the settings for your organization.',
-        },
-    },
 
-
-    [PositionApi.orgPositionList.key]: {
-        ...PositionApi.orgPositionList,
-        display: {
-            label: 'Get All Positions',
-            description: 'Gets a list of positions that have been created in your organization.',
-        },
-    },
 
     [PositionApi.orgPositionRead.key]: {
         ...PositionApi.orgPositionRead,
@@ -61,29 +36,6 @@ const actions = {
         },
     },
 
-    // Commented out until questionaire stage can be fully handled.
-    // can be done via API, but needs further validation for zapier UI. 
-    // [PositionApi.orgPositionCreate.key]: { ...PositionApi.orgPositionCreate,
-    //     display: {
-    //         label: 'Create a Position',
-    //         description: 'Creates a new position in your organization.',
-    //     },
-    // },
-    // [PositionApi.orgPositionDelete.key]: {
-    //     ...PositionApi.orgPositionDelete,
-    //     display: {
-    //         label: 'Delete a Position',
-    //         description: 'Deletes a position from your organization.',
-    //     },
-    // },
-
-    [PositionApi.orgPositionUpdate.key]: {
-        ...PositionApi.orgPositionUpdate,
-        display: {
-            label: 'Update a Position',
-            description: 'Updates a position in your organization.',
-        },
-    },
 
     [CandidatesApi.orgPositionsRead.key]: {
         ...CandidatesApi.orgPositionsRead,

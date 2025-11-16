@@ -5,7 +5,7 @@
  * @version 1.0.1
  */
 
-const samples = require('../samples/CandidatesApi');
+const samples = require('../samples/InterviewApi');
 const utils = require('../utils/utils');
 const interview = require('../models/Interview');
 const BASE_URL = process.env.BASE_URL;

@@ -9,7 +9,6 @@ const samples = require('../samples/CandidatesApi');
 const Candidate = require('../models/Candidate');
 const CandidateCreate = require('../models/CandidateCreate');
 const utils = require('../utils/utils');
-const CandidateUpdate = require('../models/CandidateUpdate');
 const BASE_URL = process.env.BASE_URL;
 
 /**
@@ -60,7 +59,7 @@ module.exports = {
             perform: async (z, bundle) => {
                 const org_id = bundle.authData.org_id;
                 const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
+                    url: `${BASE_URL}/org/${org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
                     method: 'DELETE',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
@@ -129,7 +128,7 @@ module.exports = {
             perform: async (z, bundle) => {
                 const org_id = bundle.authData.org_id;
                 const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
+                    url: `${BASE_URL}/org/${org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
@@ -150,8 +149,7 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesRead', response.json);
-                    const { communications, hired, tags, ...filtered } = results;
-                    return filtered;
+                    return results;
                 })
             },
             sample: samples['CandidateSample']
@@ -193,8 +191,9 @@ module.exports = {
                 ...Candidate.fields('', false),
             ],
             perform: async (z, bundle) => {
+                const org_id = bundle.authData.org_id;
                 const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
+                    url: `${BASE_URL}/org/${org_id}/positions/${bundle.inputData.position_id}/candidates/${bundle.inputData.candidate_id}/`,
                     method: 'PUT',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
@@ -204,7 +203,7 @@ module.exports = {
                     params: {
                     },
                     body: {
-                        ...CandidateUpdate.mapping(bundle),
+                        ...CandidateCreate.mapping(bundle),
                     },
                 }
                 return z.request(utils.requestOptionsMiddleware(z, bundle, options)).then((response) => {
@@ -216,8 +215,7 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesUpdate', response.json);
-                    const { communications, hired, tags, ...filtered } = results;
-                    return filtered;
+                    return results;
                 })
             },
             sample: samples['CandidateCreateSample']
@@ -253,8 +251,9 @@ module.exports = {
                 ...Candidate.fields('', false),
             ],
             perform: async (z, bundle) => {
+                const org_id = bundle.authData.org_id;
                 const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/positions/${bundle.inputData.position_id}/`,
+                    url: `${BASE_URL}/org/${org_id}/positions/${bundle.inputData.position_id}/`,
                     method: 'POST',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
@@ -277,8 +276,7 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCreate', response.json);
-                    const { communications, hired, tags, ...filtered } = results[0];
-                    return filtered;
+                    return results;
                 })
             },
             sample: samples['CandidateCreateSample']
@@ -313,8 +311,9 @@ module.exports = {
                 ...Candidate.fields('', false),
             ],
             perform: async (z, bundle) => {
+                const org_id = bundle.authData.org_id;
                 const options = {
-                    url: `${BASE_URL}/org/${bundle.authData.org_id}/positions/${bundle.inputData.position_id}/`,
+                    url: `${BASE_URL}/org/${org_id}/positions/${bundle.inputData.position_id}/`,
                     method: 'GET',
                     removeMissingValuesFrom: { params: true, body: true },
                     headers: {
@@ -335,8 +334,7 @@ module.exports = {
                     }
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsRead', response.json);
-                    const { communications, hired, tags, ...filtered } = results;
-                    return filtered;
+                    return results;
                 })
             },
             sample: samples['CandidateSample']
