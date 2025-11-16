@@ -5,7 +5,7 @@
  * @version 1.0.1
  */
 
-const samples = require('../samples/CandidatesApi');
+const samples = require('../samples/InterviewApi');
 const utils = require('../utils/utils');
 const interview = require('../models/Interview');
 const BASE_URL = process.env.BASE_URL;
@@ -78,7 +78,8 @@ module.exports = {
 
                     response.throwForStatus();
                     const results = utils.responseOptionsMiddleware(z, bundle, 'orgPositionsCandidatesInterviewList', response.json);
-                    return results;
+                    // API returns an array with one candidate, extract the first item
+                    return Array.isArray(results) && results.length > 0 ? results[0] : [results];
                 })
             },
             sample: samples['InterviewSample']

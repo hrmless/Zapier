@@ -82,11 +82,11 @@ module.exports = {
                 type: 'string',
                 ...(isInput && { helpText: "The calendar link of the position." }),
             },
-            // {
-            //     key: `${keyPrefix}questionaire`,
-            //     label: `Position questions`,
-            //     children: Questionnaire.fields(`${keyPrefix}questionaire[]`, isInput, true),
-            // },
+            {
+                key: `${keyPrefix}questionaire`,
+                label: `Position questions`,
+                children: Questionnaire.fields(`${keyPrefix}questionaire[]`, isInput, true),
+            },
             ...(isInput ? [] : [
                 {
                     key: `${keyPrefix}created_at`,
@@ -128,7 +128,7 @@ module.exports = {
             'created_at': bundle.inputData?.[`${keyPrefix}created_at`],
             'updated_at': bundle.inputData?.[`${keyPrefix}updated_at`],
             'agent_id': bundle.inputData?.[`${keyPrefix}agent_id`],
-           // 'questionaire': utils.childMapping(bundle.inputData?.[`${keyPrefix}questionaire`], `${keyPrefix}questionaire`, Questionnaire),
+            'questionaire': utils.childMapping(bundle.inputData?.[`${keyPrefix}questionaire`], `${keyPrefix}questionaire`, Questionnaire),
         }
     },
 }
