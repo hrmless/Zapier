@@ -19,10 +19,36 @@ const BASE_LOGIN_URL = process.env.BASE_LOGIN_URL;
  * @param {string} bundle.authData.access_token - OAuth2 access token
  * @returns {Object} The modified request object with Authorization header
  */
-const includeBearerToken = (request, z, bundle) => {
-  if (bundle.authData && bundle.authData.access_token) {
-    request.headers.Authorization = `Bearer ${bundle.authData.access_token}`;
+const includeBearerToken = async (request, z, bundle) => {
+  if (bundle.authData && bundle.authData.refresh_token) {
+    try {
+      // Always refresh token before making request
+      const refreshResponse = await z.request({
+        method: 'POST',
+        url: `${process.env.BASE_LOGIN_URL}/realms/nervai/protocol/openid-connect/token`,
+        body: {
+          refresh_token: bundle.authData.refresh_token,
+          client_id: process.env.CLIENT_ID,
+          client_secret: process.env.CLIENT_SECRET,
+          grant_type: 'refresh_token',
+        },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      // Update bundle authData with new token
+      bundle.authData.access_token = refreshResponse.data.access_token;
+      bundle.authData.refresh_token = refreshResponse.data.refresh_token;
+
+      // Set Authorization header
+      request.headers.Authorization = `Bearer ${bundle.authData.access_token}`;
+    } catch (e) {
+      z.console.log('Failed to refresh token:', e.message);
+      throw new z.errors.Error('Failed to refresh access token');
+    }
   }
+
   return request;
 };
 
@@ -138,6 +164,7 @@ const refreshAccessToken = async (z, bundle) => {
   return {
     access_token: response.data.access_token,
     refresh_token: response.data.refresh_token,
+    expires_in: response.data.expires_in,
   };
 };
 
