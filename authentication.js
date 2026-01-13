@@ -97,13 +97,15 @@ const getAccessToken = async (z, bundle) => {
       access_token: response.data.access_token,
       refresh_token: response.data.refresh_token,
       org_id: orgResponse.data.org_id,
+      // Add token expiration info
+      expires_in: response.data.expires_in, // Keycloak returns this
     };
   } catch (e) {
-    // If org_id fetch fails, still return the tokens
     z.console.log('Warning: Could not fetch org_id:', e.message);
     return {
       access_token: response.data.access_token,
       refresh_token: response.data.refresh_token,
+      expires_in: response.data.expires_in,
     };
   }
 };
@@ -119,6 +121,8 @@ const getAccessToken = async (z, bundle) => {
  * @returns {Promise<Object>} Object containing new access_token and refresh_token
  * @returns {string} return.access_token - New OAuth2 access token
  * @returns {string} return.refresh_token - New OAuth2 refresh token
+ * @returns {string} return.org_id - Preserved or re-fetched Organization ID
+ * @returns {number} return.expires_in - Token expiration time in seconds
  */
 const refreshAccessToken = async (z, bundle) => {
   const response = await z.request({
@@ -135,9 +139,28 @@ const refreshAccessToken = async (z, bundle) => {
     },
   });
 
+  // Ensure org_id is preserved or re-fetched
+  let org_id = bundle.authData.org_id;
+  
+  if (!org_id) {
+    try {
+      const orgResponse = await z.request({
+        url: `${BASE_URL}/org_id`,
+        headers: {
+          Authorization: `Bearer ${response.data.access_token}`,
+        },
+      });
+      org_id = orgResponse.data.org_id;
+    } catch (e) {
+      z.console.log('Warning: Could not fetch org_id during refresh:', e.message);
+    }
+  }
+
   return {
     access_token: response.data.access_token,
     refresh_token: response.data.refresh_token,
+    org_id: org_id,
+    expires_in: response.data.expires_in,
   };
 };
 
@@ -167,16 +190,15 @@ const authentication = {
       url: `${BASE_LOGIN_URL}/realms/nervai/protocol/openid-connect/auth`,
       params: {
         client_id: process.env.CLIENT_ID,
-        client_secret: process.env.CLIENT_SECRET,
         state: '{{bundle.inputData.state}}',
         redirect_uri: '{{bundle.inputData.redirect_uri}}',
         response_type: 'code',
+        scope: 'openid profile email',
       },
     },
     getAccessToken,
     refreshAccessToken,
     autoRefresh: true,
-    scope: 'openid profile email',
     enablePkce: true,
   },
 };
