@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "form-data": "^4.0.0",
-    "lodash": "^4.17.21",
-    "zapier-platform-core": "18.0.1"
+    "lodash": "^4.18.1",
+    "zapier-platform-core": "18.5.0"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
